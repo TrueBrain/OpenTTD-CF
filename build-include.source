@@ -63,6 +63,24 @@ base_osx() {
         $(dirname $0)/../base-osx
 }
 
+base_windows() {
+    local distro=$1
+    local distro_tag=$2
+
+    local tdistro="windows"
+
+    # We do this to deduplicate large parts of Dockerfiles
+    echo ""
+    echo "Building docker Windows base image based on ${distro}:${distro_tag} .."
+    echo ""
+    docker build \
+        --pull \
+        --build-arg DISTRO=${distro} \
+        --build-arg DISTRO_TAG=${distro_tag} \
+        -t openttd/base:${tdistro} \
+        $(dirname $0)/../base-windows
+}
+
 build_image() {
     local distro=$1
     local distro_tag=$2
@@ -107,6 +125,14 @@ build_osx() {
     base_linux ${DEFAULT_DISTRO} ${DEFAULT_DISTRO_TAG}
     base_osx ${DEFAULT_DISTRO} ${DEFAULT_DISTRO_TAG} 10.13
     build_image "osx" ${distro_tag} ${image_name} "$@"
+}
+
+build_windows() {
+    local image_name=$1
+    shift 1
+
+    base_windows microsoft/windowsservercore latest
+    build_image "windows" "" ${image_name} "$@"
 }
 
 read_targets() {
