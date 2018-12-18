@@ -70,7 +70,7 @@ RUN c:\vcpkg\vcpkg.exe install \
 	Copy-Item c:\vcpkg\installed\$Env:ARCH-windows-static\lib\libpng16.lib c:\vcpkg\installed\$Env:ARCH-windows-static\lib\libpng.lib ; \
 	Copy-Item c:\vcpkg\installed\$Env:ARCH-windows-static\lib\zlib.lib c:\vcpkg\installed\$Env:ARCH-windows-static\lib\zlibstat.lib ; \
 	Copy-Item c:\vcpkg\installed\$Env:ARCH-windows-static\lib\lzma.lib c:\vcpkg\installed\$Env:ARCH-windows-static\lib\liblzma.lib ; \
-	Copy-Item c:\vcpkg\installed\$Env:ARCH-windows-static\lib\freetype.lib c:\vcpkg\installed\$Env:ARCH-windows-static\lib\libfreetype2.lib ; \
+	Copy-Item c:\vcpkg\installed\$Env:ARCH-windows-static\lib\freetype.lib c:\vcpkg\installed\$Env:ARCH-windows-static\lib\libfreetype2.lib
 
 #COPY release.ps1 c:\\release.ps1
 
