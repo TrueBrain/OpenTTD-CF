@@ -1,0 +1,12 @@
+resources:
+- repo: self
+
+queue:
+  name: Hosted VS2017
+
+steps:
+- task: Docker@1
+  displayName: 'Build an image'
+  inputs:
+    dockerFile: windows/Dockerfile
+
